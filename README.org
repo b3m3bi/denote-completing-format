@@ -1,7 +1,7 @@
 #+title: denote-completing-format
 #+author: Luis García
 
-This small extensión introduces =denote-completing-format-open-or-create= command, an alterantive to =denote-open-or-create= that aligns and fontifies the elements of denote file names completing-read table. (Note that this command does not perform well at large scale. See [[Laggs when working with lots of notes]]). 
+This small extensión introduces =denote-completing-format-open-or-create= command, an alterantive to =denote-open-or-create= that aligns and fontifies the elements of denote file names completing-read table. (Note that this command does not perform well at large scale. See [[file:README.org::Laggs when working with lots of notes][Laggs when working with lots of notes]]). 
 
 #+attr_org: :width 750
 #+caption: Denote note completing-read table formatted.
