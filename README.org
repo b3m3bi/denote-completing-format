@@ -1,0 +1,40 @@
+#+title: denote-completing-format
+#+author: Luis García
+
+This small extensión introduces =denote-completing-format-open-or-create= command, an alterantive to =denote-open-or-create= that aligns and fontifies the elements of denote file names completing-read table. (Note that this command does not perform well at large scale. See [[Laggs when working with lots of notes]]). 
+
+#+attr_org: :width 750
+#+caption: Denote note completing-read table formatted.
+[[./denote-completing-format-img.png]]
+
+* Installation and configuration
+
+Clone this repository:
+
+#+begin_src shell
+  git clone 
+#+end_src
+
+Require and configure package on =init.el=:
+
+#+begin_src elisp
+  (add-to-list 'load-path "./denote-completing-format") ; path to repo
+  (require 'denote-completing-format)
+  (global-key (kbd "C-n n f") #'denote-completing-format-open-or-create)
+#+end_src
+
+* Configuration
+
+You can configure the container sizes of different denote's file name elements with the variables: =denote-completing-format-subdir-width=, =denote-completing-format-date-width=, =denote-completing-format-title-width=, =denote-completing-format-keywords-width= and =denote-competing-format-extension-width=.
+
+Aditionally you can deslugiffy file title with =denote-completing-format-desslugiffy=, and customize the fonts by modifing the =denote-completing-format-fonts-= variables. Also you can change the function to create notes with =denote-completing-format-create-function=.
+
+* Laggs when working with lots of notes
+
+The creation of the formatted completion table is inefficient and slow which implies long delays to prompt for file selection. In a test folder containing 13000 notes ([[https://lucidmanager.org/productivity/testing-denote-package/][created using Peter Prevos script]]) the execution time of the creation of the formatted completion table (=denote-completing-format-open-or-create=) is greater than 2.7 seconds ( =benchmark-run=). In contrast the file prompt used by =denote-open-or-create= (=denote-file-prompt=) takes approximatly 0.4 seconds.
+
+* TODOS
+
++ [ ] build the completion table in a more eficient and fast way
++ [ ] customize table formatting using a template instead of customizing multiple variables (similar to [[https://github.com/emacs-citar/citar#templates][citar's template]])
++ [ ] implement completing-read best practices (e.g., add category metadata to completing candidates)
