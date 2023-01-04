@@ -3,7 +3,7 @@
 ;; Copyright (C) 2023  Luis García
 
 ;; Author: Luis García <sharlsberg37@gmail.com>
-;; URL: 
+;; URL: https://github.com/emacs-citar/citar.git
 ;; Version: 0.0.1
 ;; Package-Requires: ((emacs "28.1"))
 

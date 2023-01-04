@@ -12,7 +12,7 @@ This small extensión introduces =denote-completing-format-open-or-create= comma
 Clone this repository:
 
 #+begin_src shell
-  git clone 
+  git clone https://github.com/b3m3bi/denote-completing-format
 #+end_src
 
 Require and configure package on =init.el=:
