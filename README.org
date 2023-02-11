@@ -1,7 +1,7 @@
 #+title: denote-completing-format
 #+author: Luis García
 
-This small extensión introduces =denote-completing-format-open-or-create= command, an alterantive to =denote-open-or-create= that aligns and fontifies the elements of denote file names completing-read table. (Note that this command does not perform well at large scale. See [[file:README.org::Laggs when working with lots of notes][Laggs when working with lots of notes]]). 
+This small extension introduces =denote-completing-format-open-or-create= and =denote-completing-format-link-or-create= commands, an alterantive to =denote-open-or-create= and =denote-link-or-create= that align and fontify the elements of denote file names in completing-read prompt. (Note that this command does not perform well at large scale. See [[file:README.org::Laggs when working with lots of notes][Laggs when working with lots of notes]]). 
 
 #+attr_org: :width 750
 #+caption: Denote note completing-read table formatted.
@@ -21,6 +21,7 @@ Require and configure package on =init.el=:
   (add-to-list 'load-path "./denote-completing-format") ; path to repo
   (require 'denote-completing-format)
   (global-key (kbd "C-n n f") #'denote-completing-format-open-or-create)
+  (global-key (kbd "C-n n i") #'denote-completing-format-link-or-create)
 #+end_src
 
 ** Configuration
@@ -35,6 +36,6 @@ The creation of the formatted completion table is inefficient and slow which imp
 
 ** TODOS
 
-+ build the completion table in a more eficient and fast way
-+ customize table formatting using a template instead of customizing multiple variables (similar to [[https://github.com/emacs-citar/citar#templates][citar's template]])
++ build the completion prompt in a more eficient and fast way
++ customize prompt formatting using a template instead of customizing multiple individual variables (similar to [[https://github.com/emacs-citar/citar#templates][citar's template]])
 + implement completing-read best practices (e.g., add category metadata to completing candidates)

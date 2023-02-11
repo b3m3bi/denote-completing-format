@@ -192,5 +192,13 @@ With optional INITIAL-TEXT, use it to prepopulate the minibuffer."
 	chosen-value
       chosen)))
 
+;; Modified version of `denote-link-or-create'
+(defun denote-completing-format-link-or-create (target &optional id-only)
+  "Use `denote-link' on TARGET file, creating it if necessary"
+  (interactive (list (denote-completing-format-file-prompt) current-prefix-arg))
+  (if (file-exists-p target)
+      (denote-link target id-only)
+    (call-interactively #'denote-link-after-creating)))
+
 (provide 'denote-completing-format)
 ;;; denote-completing-format.el ends here
