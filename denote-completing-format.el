@@ -133,6 +133,7 @@ If DESLUGGIFY is non-nil apply `denote-desluggify'."
     (mapcar
      (lambda(file)
        (if (and (denote-file-has-identifier-p file)
+		(denote-file-has-supported-extension-p file)
 		(not (backup-file-name-p file)))
 	   (puthash (concat
 		     (propertize
@@ -198,7 +199,18 @@ With optional INITIAL-TEXT, use it to prepopulate the minibuffer."
   (interactive (list (denote-completing-format-file-prompt) current-prefix-arg))
   (if (file-exists-p target)
       (denote-link target id-only)
-    (call-interactively #'denote-link-after-creating)))
+    (call-interactively #'denote-completing-format-link-after-creating)))
+
+;; Modified version of `denote-link-after-creating'
+(defun denote-completing-format-link-after-creating (&optional id-only)
+  "Create new note in the background and link to it directly."
+  (interactive "P")
+  (let (path)
+    (save-window-excursion
+      (call-interactively denote-completing-format-create-function)
+      (save-buffer)
+      (setq path (buffer-file-name)))
+    (denote-link path id-only)))
 
 (provide 'denote-completing-format)
 ;;; denote-completing-format.el ends here
